@@ -10,7 +10,7 @@ laptop1 = {
             date_manufacture: Date.new(2020, 1, 7),
             collection_point: "Curepipe",
             rental_rate: "100",
-            user: User.create!({ email: "laptop1@hp.com" })
+            user: User.create!({ email: "laptop1@hp.com", password: "secret" })
           }
 
 laptop2 = {
@@ -20,7 +20,7 @@ laptop2 = {
             date_manufacture: Date.new(2020, 2, 7),
             collection_point: "Port Louis",
             rental_rate: "150",
-            user: User.create!({ email: "laptop2@mac.com" })
+            user: User.create!({ email: "laptop2@mac.com", password: "secret" })
           }
 
 laptop3 = {
@@ -30,7 +30,7 @@ laptop3 = {
             date_manufacture: Date.new(2020, 3, 7),
             collection_point: "Quatre Bornes",
             rental_rate: "70",
-            user: User.create!({ email: "laptop3@linux.com" })
+            user: User.create!({ email: "laptop3@linux.com", password: "secret" })
           }
 
 [laptop1, laptop2, laptop3].each do |attributes|
