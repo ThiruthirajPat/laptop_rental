@@ -8,7 +8,7 @@ class Booking < ApplicationRecord
   # :date_from cannot be earlier than current date
   # :date_to cannot be earlier than :date_from
   # :status  in_progress declined approved
-
+  validates :status, inclusion: { in: ["In Progress", "Declined", "Approved"], message: "%{value} is not a valid status"}
   # validates :start_date, :end_date, presence: true, availability: true
   
   private

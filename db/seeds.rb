@@ -25,7 +25,28 @@ user3 = {
           password: "secret"
         }
 
-[user1, user2, user3].each do |attributes|
+user4 = {
+          first_name: "Nikhil",
+          last_name: "Anauth",
+          email: "nikhil.anauth@gmail.com",
+          password: "secret"
+        }
+
+user5 = {
+          first_name: "Nicolas",
+          last_name: "Bagnath",
+          email: "nicolas.bagnath@gmail.com",
+          password: "secret"
+        }
+
+user6 = {
+          first_name: "Radhika",
+          last_name: "Sookeera",
+          email: "radhika.sookeera@gmail.com",
+          password: "secret"
+        }
+
+[user1, user2, user3, user4, user5, user6].each do |attributes|
   user = User.create!(attributes)
     puts "Created #{user.first_name} #{user.last_name}"
 end
@@ -66,5 +87,64 @@ laptop3 = {
   laptop = Laptop.create!(attributes)
   puts "Created #{laptop.brand}"
 end
+
+puts "Creating Bookings"
+
+booking1 = {
+           laptop: Laptop.find(1),
+           user: User.find(4),
+           date_from: Date.new(2021,11,1),
+           date_to: Date.new(2021,11,6),
+           status: "In Progress"
+           }
+
+booking2 = {
+            laptop: Laptop.find(2),
+            user: User.find(5),
+            date_from: Date.new(2021,12,1),
+            date_to: Date.new(2021,12,6),
+            status: "In Progress"
+            }
+
+booking3 = {
+            laptop: Laptop.find(3),
+            user: User.find(6),
+            date_from: Date.new(2021,12,11),
+            date_to: Date.new(2021,12,16),
+            status: "In Progress"
+            }
+
+[booking1, booking2, booking3].each do |attributes|
+  booking = Booking.create!(attributes)
+  puts "Created booking by #{booking.user.last_name}"
+  end
+
+puts "Creating Reviews"
+
+review1 = {
+          booking: Booking.find(1),        
+          rating: 1,
+          content: "Poor Service. Laptop not working",
+          
+}
+
+
+review2 = {
+  booking: Booking.find(2),        
+  rating: 3,
+  content: "Average Laptop. Owner is reliable."
+}
+
+
+review3 = {
+  booking: Booking.find(3),        
+  rating: 5,
+  content: "Great Laptop. Not returning it."
+}
+
+[review1, review2, review3].each do |attributes|
+  review = Review.create!(attributes)
+  puts "Created #{review.id} by #{review.booking.user.last_name}"
+  end
 
 puts "Finished!"
