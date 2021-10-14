@@ -1,5 +1,34 @@
 puts "Cleaning database..."
+User.destroy_all
 Laptop.destroy_all
+
+puts "Creating users..."
+
+user1 = {
+          first_name: "Shyam",
+          last_name: "Abacousnac",
+          email: "shyam.abacousnac@gmail.com",
+          password: "secret"
+        }
+
+user2 = {
+          first_name: "Vickram",
+          last_name: "Bayragee",
+          email: "laptop.test@gmail.com",
+          password: "secret"
+        }
+
+user3 = {
+          first_name: "Kaviraj",
+          last_name: "Pather",
+          email: "pather.thiruthiraj@gmail.com",
+          password: "secret"
+        }
+
+[user1, user2, user3].each do |attributes|
+  user = User.create!(attributes)
+    puts "Created #{user.first_name} #{user.last_name}"
+end
 
 puts "Creating laptops..."
 
@@ -10,7 +39,7 @@ laptop1 = {
             date_manufacture: Date.new(2020, 1, 7),
             collection_point: "Curepipe",
             rental_rate: "100",
-            user: User.create!({ email: "laptop1@hp.com", password: "secret" })
+            user: User.first
           }
 
 laptop2 = {
@@ -20,7 +49,7 @@ laptop2 = {
             date_manufacture: Date.new(2020, 2, 7),
             collection_point: "Port Louis",
             rental_rate: "150",
-            user: User.create!({ email: "laptop2@mac.com", password: "secret" })
+            user: User.second
           }
 
 laptop3 = {
@@ -30,7 +59,7 @@ laptop3 = {
             date_manufacture: Date.new(2020, 3, 7),
             collection_point: "Quatre Bornes",
             rental_rate: "70",
-            user: User.create!({ email: "laptop3@linux.com", password: "secret" })
+            user: User.third
           }
 
 [laptop1, laptop2, laptop3].each do |attributes|
