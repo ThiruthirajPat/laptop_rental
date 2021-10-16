@@ -11,13 +11,13 @@ class Laptop < ApplicationRecord
   # operating_system to select from an array of OS
   validates :operating_system, inclusion: { in: %w(Windows Mac Linux), message: "%{value} is not a valid operating system"}
   # date_manufacture should be earlier than current date
-  validate :date_manufacture_cannot_be_in_the_past
+  validate :date_manufacture_is_in_the_past
   # collection_point to select from an array of regions
   validates :collection_point, inclusion: { in: ["Curepipe", "Port Louis", "Quatre Bornes", "Vacoas", "Rose Hill"], message: "%{value} is not a valid collection point"}
   # rental_rate numericality cannot be nil /negative
   validates :rental_rate, numericality: { only_integer: true }
 
-  def date_manufacture_cannot_be_in_the_past
+  def date_manufacture_is_in_the_past
     if date_manufacture > Date.today
       errors.add(:date_manufacture, "cannot be in the past")
     end
