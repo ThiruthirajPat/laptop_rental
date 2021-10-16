@@ -1,2 +1,18 @@
 <h1>Bookings#new</h1>
 <p>Find me in app/views/bookings/new.html.erb</p>
+<div class="container py-5">
+  <div class="row">
+    <div class="col-12 col-md-6 offset-lg-3">
+      <div class="bg-white rounded p-3 shadow">
+        <h3>Create a Booking</h3>
+        <%= simple_form_for ([@laptop, @booking]) do |f| %>
+          <%= f.date_field :date_from, placeholder: 'Start Date' %>
+          <%= f.date_field :date_to, placeholder: 'End Date' %>
+          <%= f.input :status, placeholder: 'Status' %>
+          <%= f.submit class: 'btn btn-outline-primary' %>
+        <% end %>
+      </div>
+      <%# <%= link_to "Back", laptop.bookings_path %>
+    </div>
+  </div>
+</div>
