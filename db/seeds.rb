@@ -58,7 +58,7 @@ laptop1 = {
             model: "HP1370",
             operating_system: "Windows",
             date_manufacture: Date.new(2020, 1, 7),
-            collection_point: "Curepipe",
+            collection_point: "Curepipe, Mauritius",
             rental_rate: "100",
             user: User.first
           }
@@ -68,7 +68,7 @@ laptop2 = {
             model: "Macbook Pro",
             operating_system: "Mac",
             date_manufacture: Date.new(2020, 2, 7),
-            collection_point: "Port Louis",
+            collection_point: "Port Louis, Mauritius",
             rental_rate: "150",
             user: User.second
           }
@@ -78,7 +78,7 @@ laptop3 = {
             model: "Latitude",
             operating_system: "Linux",
             date_manufacture: Date.new(2020, 3, 7),
-            collection_point: "Quatre Bornes",
+            collection_point: "Quatre Bornes, Mauritius",
             rental_rate: "70",
             user: User.third
           }
