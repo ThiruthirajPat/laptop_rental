@@ -8,13 +8,18 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    @laptop = Laptop.find(params[:laptop_id])
   end
 
   def create
     @booking = Booking.new(booking_params)
-    print(@booking)
+    @laptop = Laptop.find(params[:laptop_id])
+  
+    @booking.laptop = @laptop
+    @booking.user = current_user 
+
       if @booking.save
-        redirect_to bookings_path, notice: 'booking was created'
+        redirect_to bookings_index_path, notice: 'Booking was created'
       else
         render :new
       end
