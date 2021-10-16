@@ -19,7 +19,6 @@ class Laptop < ApplicationRecord
 
   def date_manufacture_is_in_the_past
     if date_manufacture > Date.today
-      raise
       errors.add(:date_manufacture, "cannot be in the future")
     end
   end

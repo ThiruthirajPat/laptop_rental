@@ -1,0 +1,16 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-12 col-md-6 offset-lg-3">
+      <div class="bg-white rounded p-3 shadow">
+        <h3>Add a Review</h3>
+        <%= simple_form_for [booking, review] do |f| %>
+          <%= f.input :content, collection: 0..5, placeholder: 'Give a rating (0-5)' %>
+          <%= f.input :content, as: :text, placeholder: 'Enter a comment about the list' %>
+          <%= f.submit class: 'btn btn-outline-primary' %>
+        <% end %>
+      </div>
+      <%= link_to "Back", bookings_path %>
+    </div>
+  </div>
+</div>
+
