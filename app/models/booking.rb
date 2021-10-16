@@ -1,7 +1,7 @@
 class Booking < ApplicationRecord
   belongs_to :laptop
   belongs_to :user
-  
+  has_many :reviews, dependent: :destroy
   validates :date_from, :date_to, :status, presence: true
   validate :end_date_after_start_date
 
