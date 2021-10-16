@@ -1,7 +1,7 @@
 class Laptop < ApplicationRecord
   belongs_to :user
   has_one_attached :photo 
-
+  has_many :bookings, dependent: :destroy
   validates :brand, :model, :operating_system, :date_manufacture, :collection_point, :rental_rate, presence: true
 
   # brand to select from an array of brands - dropdown
