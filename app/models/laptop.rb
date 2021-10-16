@@ -13,7 +13,7 @@ class Laptop < ApplicationRecord
   # date_manufacture should be earlier than current date
   validate :date_manufacture_cannot_be_in_the_past
   # collection_point to select from an array of regions
-  validates :collection_point, inclusion: { in: ["Curepipe", "Port Louis", "Quatre Bornes", "Vacoas", "Rose Hill"], message: "%{value} is not a valid collection point"}
+  validates :collection_point, inclusion: { in: ["Curepipe, Mauritius", "Port Louis, Mauritius", "Quatre Bornes, Mauritius", "Vacoas, Mauritius", "Rose Hill, Mauritius"], message: "%{value} is not a valid collection point"}
   # rental_rate numericality cannot be nil /negative
   validates :rental_rate, numericality: { only_integer: true }
 
