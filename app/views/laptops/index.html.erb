@@ -1,0 +1,23 @@
+<div class="cover mb-4 d-flex align-items-center justify-content-center">
+  <div class="text-center">
+    <h1>Rent a laptop</h1>
+    <h3 class="typed-js"></h3>
+  </div>
+</div>
+<div class="container py-5">
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h3 class="mb-0">My Bookings</h3>
+    <%= link_to 'Create a Laptop',new_laptop_path, class: 'btn btn-flat' %>
+  </div>
+  <div class="row">
+    <% @laptops.each do |laptop| %>
+      <div class="co-12 colsm-6 col-md-4 mb-3">
+        <%= link_to laptop_path(laptop), class:'text-decoration-none' do %>
+          <div class="card-category" data-aos="zoom-in" style=" background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= laptop.photo.attached? ? cl_image_path(laptop.photo.key) : asset_path('laptop_background.jpeg') %>)">
+            <%= laptop.brand %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
