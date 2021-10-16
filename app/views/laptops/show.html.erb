@@ -15,7 +15,7 @@
                   <h5>Daily Rental Rate: <%= @laptop.rental_rate %> MUR</h5>
                 </div>
                 <div class="">
-            
+
                 </div>
             </div>
           </div>
@@ -26,7 +26,7 @@
     <div class="col-12 col-md-6 offset-lg-3">
       <div class="bg-white rounded p-3 shadow">
         <h3>Create a Booking</h3>
-        <%= simple_form_for @booking do |f| %>
+        <%= simple_form_for [@laptop, @booking] do |f| %>
           <%= f.date_field :date_from, placeholder: 'Start Date' %>
           <%= f.date_field :date_to, placeholder: 'End Date' %>
           <%= f.input :status, placeholder: 'Status' %>
