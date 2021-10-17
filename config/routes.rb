@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   # get 'bookings/edit'
 
   devise_for :users
-  root to: 'laptops#index'
+  root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :laptops do
