@@ -17,6 +17,11 @@ class LaptopsController < ApplicationController
     end
 
     def update
+      if @laptop.update(laptop_params)
+        redirect_to @laptop, notice: 'Laptop was updated'
+      else
+        render :edit
+      end
     end
 
     def destroy

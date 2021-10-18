@@ -1,0 +1,42 @@
+<div class="container py-5 rounded">
+  <div class="row">
+    <div class="col-12 col-md-6 offset-lg-3">
+      <div class="bg-white rounded p-3 shadow">
+        <div class="text-center my-4">
+        <h3><strong>Edit the Details of Your Laptop</strong></h3>
+        </div>
+        <%= simple_form_for @laptop do |f| %>
+          <div class="my-2">
+            <%= f.label "Select the brand of your laptop"%>
+            <%= f.input_field :brand, collection: ["HP", "Apple", "Dell", "Asus", "Acer", "Lenovo"] %>
+          <div>
+          <div class="my-2">
+            <%= f.label "Which Model is it?"%>
+            <%= f.input_field :model %>
+          </div>
+          <div class="my-2">
+            <%= f.label "Select its Operating System"%>
+            <%= f.input_field :operating_system, collection: ["Windows", "Mac", "Linux"], placeholder: 'Laptop OS' %>
+          </div>
+          <div class="my-2">
+            <%= f.label "Select its Date of Manufacture"%>
+            <%= f.date_field :date_manufacture, placeholder: 'Laptop DOM' %>
+          </div>
+          <div class="my-2">
+            <%= f.label "Where can the Lessee collect it?"%>
+            <%= f.input_field :collection_point, collection: ["Curepipe, Mauritius", "Port Louis, Mauritius", "Quatre Bornes, Mauritius", "Vacoas, Mauritius", "Rose Hill, Mauritius"], placeholder: 'Laptop collection_point' %>
+          </div>
+          <div class="my-2">
+            <%= f.label "What is the Daily Rental Rate?"%>
+            <%= f.input_field :rental_rate, placeholder: 'in Mauritian Rupees' %>
+          </div class="my-2">
+           <%= f.label "Please attach a photo of your laptop"%>
+           <%= f.input_field :photo, as: :file %>
+          <div class="my-4">
+            <%= f.submit class: 'btn btn-outline-warning btn-sm' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
