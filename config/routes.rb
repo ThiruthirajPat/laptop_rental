@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 #   get 'laptops/index'
 #   get 'laptops/show'
-
+  get 'pages/home'
   get 'bookings/index'
   # get 'bookings/new'
   # get 'bookings/create'
