@@ -1,41 +1,70 @@
-<div class="d-flex justify-content-center">
+<div class="card text-center sticky-top py-2 booking-form">            
+  <h3><strong>Book this <%= @laptop.brand %> Laptop Now?</strong></h3>
+  <%= simple_form_for [@laptop, @booking] do |f| %>
+    <strong><%= f.label "Start Date" %></strong>
+    <%= f.date_field :date_from %>
+    <strong><%= f.label "End Date" %></strong>
+    <%= f.date_field :date_to %>
+    <%= f.submit class: 'btn btn-outline-warning' %>
+  <% end %>
+</div>
 
-    <div class="col-6 text-center">
-    <h1>Want to rent this <%= @laptop.brand %> Laptop?</h1>
-        <div class="card">
-          <div class="card-image"></div>
-          <div class="card-content">
-            <%= image_tag ("laptop_background.jpeg"), size:"100x400", :class => "card-img-top" %>
-            <div class="flat-card-title">
-
-                <div class="">
-                  <h5>Model: <%= @laptop.model %></h5>
-                  <h5>Operating System: <%= @laptop.operating_system %></h5>
-                  <h5>Date of Manufacturing: <%= @laptop.date_manufacture %></h5>
-                  <h5>Daily Rental Rate: <%= @laptop.rental_rate %> MUR</h5>
-                </div>
-                <div class="">
-
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
-<div class="container py-5">
+<div class="container my-5">
   <div class="row">
-    <div class="col-12 col-md-6 offset-lg-3">
-      <div class="bg-white rounded p-3 shadow">
-        <h3>Create a Booking</h3>
-        <%= simple_form_for [@laptop, @booking] do |f| %>
-          <%= f.date_field :date_from, placeholder: 'Start Date' %>
-          <%= f.date_field :date_to, placeholder: 'End Date' %>
-          <%= f.input :status, placeholder: 'Status' %>
-          <%= f.submit class: 'btn btn-outline-primary' %>
-        <% end %>
+    <div class="col-sm">
+      <%= image_tag ("laptop_background.jpeg"), size:"100x400", :class => "card-img-top" %>
+    </div>
+    <div class="col-sm mt-5">
+      <div class="card p-2">
+        <table>
+          <tr>
+            <th><h5><strong>Model:<strong><h5></th>
+            <th><h5 ><%= @laptop.model %></h5></th>
+          </tr>
+          <tr>
+            <th><h5><strong>Operating System:<strong><h5></th>
+            <th><h5> <%= @laptop.operating_system %></h5></th>
+          </tr>
+          <tr>
+            <th><h5><strong>Date of Manufacturing:<strong><h5></th>
+            <th><h5> <%= @laptop.date_manufacture.strftime("%B %d, %Y") %></h5></th>
+          </tr>  
+          <tr>  
+            <th><h5><strong>Daily Rental Rate:<strong><h5></th>
+            <th><h5> <%= @laptop.rental_rate %> MUR</h5></th>
+          </tr>
+          <tr>
+            <th><h5><strong>Collection Point:<strong><h5></th>
+            <th><h5> <%= @laptop.collection_point %></h5></th>
+          </tr>
+          <tr>
+            <th><h5><strong>Owner: <strong><h5></th>
+            <th><h5> <%= @laptop.user.first_name %> <%= @laptop.user.last_name %></h5></th>
+          </tr>       
+        </table>
       </div>
-      <%# <%= link_to "Back", laptop.bookings_path %>
     </div>
   </div>
 </div>
 
+<div class="container my-5">
+  <div class="row">
+    <div class="col-sm">
+      <div class="px-2">
+        <h2> Reviews</h2>
+      </div>
+      <% @laptop.bookings.each do |booking| %>
+        <% booking.reviews.each do |review| %>
+          <div class="card p-2">
+            <p><strong>User:</strong> <%= booking.user.first_name %> <%=booking.user.last_name %></p>
+            <p><strong>Rating:</strong> <% review.rating.times do  %>
+              <i class="fas fa-star"></i>
+            <% end %>
+            <p><strong>Comment:</strong> <%= review.content %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
+
