@@ -1,2 +1,53 @@
-<h1>Bookings#show</h1>
-<p>Find me in app/views/bookings/show.html.erb</p>
+<div class="d-flex justify-content-center mt-5">
+  <h1>Details of the booking</h1>  
+</div>
+
+<div class="container my-5">
+  <div class="row">
+    <div class="col-sm">
+      <%= image_tag ("laptop_background.jpeg"), size:"100x400", :class => "card-img-top" %>
+    </div>
+    <div class="col-sm mt-5">
+      <div class="card p-2">
+        <table>
+          <tr>
+            <th><h5><strong>Model:<strong><h5></th>
+            <th><h5 ><%= @booking.laptop.model %></h5></th>
+          </tr>
+          <tr>
+            <th><h5><strong>Operating System:<strong><h5></th>
+            <th><h5> <%= @booking.laptop.operating_system %></h5></th>
+          </tr>
+          <tr>
+            <th><h5><strong>Date of Manufacturing:<strong><h5></th>
+            <th><h5> <%= @booking.laptop.date_manufacture.strftime("%B %d, %Y") %></h5></th>
+          </tr>  
+          <tr>  
+            <th><h5><strong>Daily Rental Rate:<strong><h5></th>
+            <th><h5> <%= @booking.laptop.rental_rate %> MUR</h5></th>
+          </tr>
+          <tr>
+            <th><h5><strong>Collection Point:<strong><h5></th>
+            <th><h5> <%= @booking.laptop.collection_point %></h5></th>
+          </tr>
+          <tr>
+            <th><h5><strong>Owner: <strong><h5></th>
+            <th><h5> <%= @booking.laptop.user.first_name %> <%= @booking.laptop.user.last_name %></h5></th>
+          </tr>
+          <tr>
+            <th><h5><strong>Start of Rental: <strong><h5></th>
+            <th><h5> <%= @booking.date_from.strftime("%B %d, %Y") %> </h5></th>
+          </tr>
+          <tr>
+            <th><h5><strong>End of Rental: <strong><h5></th>
+            <th><h5> <%= @booking.date_to.strftime("%B %d, %Y") %> </h5></th>
+          </tr>
+          <tr>
+            <th><h5><strong>Status: <strong><h5></th>
+            <th><h5> <%= @booking.status %> </h5></th>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
