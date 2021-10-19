@@ -2,7 +2,17 @@ class LaptopsController < ApplicationController
  before_action :set_laptop, only: [:show, :edit, :update, :destroy]
 
     def index
-      @laptops = Laptop.all
+      if params[:query].present?
+        sql_query = " \
+          laptops.brand @@ :query \
+          OR laptops.model @@ :query \
+          OR laptops.operating_system @@ :query \
+          OR laptops.collection_point @@ :query \
+        "
+        @laptops = Laptop.where(sql_query, query: "%#{params[:query]}%")
+      else
+        @laptops = Laptop.all
+      end
     end
 
     def show
