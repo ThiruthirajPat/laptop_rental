@@ -1,4 +1,4 @@
-<div class="card text-center sticky-top py-2 booking-form">            
+<div class="card text-center sticky-top py-2 booking-form">
   <h3><strong>Book this <%= @laptop.brand %> Laptop Now?</strong></h3>
   <%= simple_form_for [@laptop, @booking] do |f| %>
     <strong><%= f.label "Start Date" %></strong>
@@ -28,8 +28,8 @@
           <tr>
             <th><h5><strong>Date of Manufacturing:<strong><h5></th>
             <th><h5> <%= @laptop.date_manufacture.strftime("%B %d, %Y") %></h5></th>
-          </tr>  
-          <tr>  
+          </tr>
+          <tr>
             <th><h5><strong>Daily Rental Rate:<strong><h5></th>
             <th><h5> <%= @laptop.rental_rate %> MUR</h5></th>
           </tr>
@@ -40,7 +40,7 @@
           <tr>
             <th><h5><strong>Owner: <strong><h5></th>
             <th><h5> <%= @laptop.user.first_name %> <%= @laptop.user.last_name %></h5></th>
-          </tr>       
+          </tr>
         </table>
       </div>
     </div>
@@ -67,4 +67,3 @@
     </div>
   </div>
 </div>
-
