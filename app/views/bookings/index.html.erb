@@ -5,7 +5,7 @@
 </div>
 
 <div class="container py-2">
-  <% @bookings.each do |booking| %>
+  <% current_user.bookings.each do |booking| %>
     <%# <%= if booking.user_id == current_user.id %>
     <%= link_to booking_path(booking), class:'text-decoration-none' do %>
       <div class="card-product mx-auto">

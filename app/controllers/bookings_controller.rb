@@ -26,14 +26,16 @@ class BookingsController < ApplicationController
   end
 
   def show
+    @booking.user = current_user 
   end
 
   def edit
   end
 
   def destroy
+    @booking.user = current_user 
     @booking.destroy
-    redirect_to bookings_path
+    redirect_to current_user
   end
 
   private
