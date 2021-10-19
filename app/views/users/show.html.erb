@@ -1,0 +1,87 @@
+<div class="row mx-2">
+  <div class="col-4">
+    <div class="my-4 text-center">
+      <img class="avatar-extra-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+    </div>
+    <div class="text-center my-1">
+      <%= link_to "Update Profile", "#", class: "btn btn-warning btn-sm" %>
+    </div>
+  </div>
+  
+  <div class="col-8 my-4">
+    <div class="text-center">
+      <h1>Hello <%= @user.first_name %> <%= @user.last_name %>!</h1>
+    </div>
+    <div class="text-start">
+      <p><strong>Account ID:</strong> <%= @user.id %></p>
+      <p><strong>Email Address:</strong> <%= @user.email %></p>
+      <p><strong>Date of Account Creation:</strong> <%= @user.created_at.strftime("%B %d, %Y") %></p>
+      <p><strong>Laptops Owned:</strong> <%= @user.laptops.count %></p>
+      <p><strong>Bookings Made:</strong> <%= @user.bookings.count %></p>
+      
+    </div>
+    
+  </div>
+
+<div class="container px-4">
+  <div class="d-flex bd-highlight justify-content-center py-3">
+    <h2>Your Laptops<h2>
+    <%= link_to "Add a Laptop", "#", class: "btn btn-outline-warning btn-sm mx-3" %>
+  </div>
+  <div class="row gx-5 d-flex bd-highlight">
+  <% @user.laptops.each do |laptop| %>  
+    <div class="col-6">
+      <div class="p-3 border bg-light">
+        <p><strong>Laptop:</strong> <%= laptop.brand %> <%= laptop.model %>
+        <p><strong>Number of Bookings:</strong> <%= laptop.bookings.count %>
+        <p><strong>Number of Reviews:</strong> <%= laptop.reviews.count %>
+        <p><strong>Bookings Received:</strong>
+          <% laptop.bookings.each do |booking| %>
+            <div class="py-2">
+              <ul>
+                <strong><li>Booking ID: <%= booking.id %></li></strong>
+                <li>Name of Lessee: <%= booking.user.first_name %> <%= booking.user.last_name %></li>
+                <li>End Date: <%= booking.date_from.strftime("%B %d, %Y") %></li>
+                <li>End Date: <%= booking.date_to.strftime("%B %d, %Y") %></li>
+                <li>Status: <%= booking.status %></li>
+              </ul>
+                <%= link_to "Accept Booking", "#", class: "btn btn-success btn-sm" %>
+                <%= link_to "Decline Booking", "#", class: "btn btn-warning btn-sm" %>
+            </div>
+          <% end %>
+      </div>
+    </div>  
+  <% end %>
+  </div>
+</div>
+
+
+<div class="container px-4">
+  <div class="d-flex bd-highlight justify-content-center py-3">
+    <h2>Your Bookings Made<h2>
+    <%= link_to "View Laptops to rent", "#", class: "btn btn-outline-warning btn-sm mx-3" %>
+  </div>
+  <div class="row gx-5 d-flex bd-highlight">
+  <% @user.bookings.each do |booking| %>  
+    <div class="col-6">
+      <div class="p-3 border bg-light">
+        <div class="py-2">
+            <ul>
+              <strong><li>Booking ID: <%= booking.id %></li></strong>
+              <li>Laptop Brand: <%= booking.laptop.brand %></li>
+              <li>Laptop Model: <%= booking.laptop.model %></li>
+              <li>Laptop Owner: <%= booking.laptop.user.first_name %> <%= booking.laptop.user.last_name %></li>
+              <li>Start Date: <%= booking.date_from.strftime("%B %d, %Y") %></li>
+              <li>End Date: <%= booking.date_to.strftime("%B %d, %Y") %></li>
+              <li>Collection Point: <%= booking.laptop.collection_point %></li>
+              <li>Status: <%= booking.status %></li>
+            </ul>
+              <%= link_to "View Booking", "#", class: "btn btn-success btn-sm" %>
+              <%= link_to "Delete Booking", "#", class: "btn btn-warning btn-sm" %>
+              <%= link_to "Add Review", "#", class: "btn btn-info btn-sm" %>
+        </div>      
+      </div>
+    </div>  
+  <% end %>
+  </div>
+</div>
