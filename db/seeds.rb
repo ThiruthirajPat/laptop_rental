@@ -135,8 +135,10 @@ laptop6 = {
             user: User.third
           }
 
-[laptop1, laptop2, laptop3, laptop4, laptop5, laptop6].each do |attributes|
+[laptop1, laptop2, laptop3, laptop4, laptop5, laptop6].each_with_index do |attributes, i|
   laptop = Laptop.create!(attributes)
+  laptop.photo.attach(io: File.open(Rails.root.join("app/assets/images/#{i+1}.jpg")),
+                  filename: "#{i+1}.jpg")
   puts "Created #{laptop.brand}"
 end
 
@@ -169,7 +171,7 @@ booking4 = {
             date_from: Date.new(2021,12,1),
             date_to: Date.new(2021,12,6)
 }
-  
+
 booking5 = {
             laptop: Laptop.find(3),
             user: User.find(8),
@@ -192,38 +194,38 @@ booking6 = {
 puts "Creating Reviews"
 
 review1 = {
-          booking: Booking.find(1),        
+          booking: Booking.find(1),
           rating: 1,
           content: "Poor Service. Laptop not working",
-          
+
 }
 
 review2 = {
-  booking: Booking.find(2),        
+  booking: Booking.find(2),
   rating: 3,
   content: "Average Laptop. Owner is reliable though."
 }
 
 review3 = {
-  booking: Booking.find(3),        
+  booking: Booking.find(3),
   rating: 5,
   content: "Great Laptop. Not returning it."
 }
 
 review4 = {
-  booking: Booking.find(4),        
+  booking: Booking.find(4),
   rating: 5,
   content: "Wow! What a Laptop.Still dreaming of it"
 }
 
 review5 = {
-  booking: Booking.find(5),        
+  booking: Booking.find(5),
   rating: 4,
   content: "Recommend for gaming."
 }
 
 review6 = {
-  booking: Booking.find(6),        
+  booking: Booking.find(6),
   rating: 4,
   content: "What are you waiting to book this laptop?"
 }
