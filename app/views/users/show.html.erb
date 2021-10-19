@@ -4,7 +4,7 @@
       <img class="avatar-extra-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
     </div>
     <div class="text-center my-1">
-      <%= link_to "Update Profile", "#", class: "btn btn-warning btn-sm" %>
+      <%= link_to "Update Profile",  edit_user_path(@user), class: "btn btn-warning btn-sm" %>
     </div>
   </div>
   
@@ -26,7 +26,7 @@
 <div class="container px-4">
   <div class="d-flex bd-highlight justify-content-center py-3">
     <h2>Your Laptops<h2>
-    <%= link_to "Add a Laptop", "#", class: "btn btn-outline-warning btn-sm mx-3" %>
+    <%= link_to "Add a Laptop", new_laptop_path, class: "btn btn-outline-warning btn-sm mx-3" %>
   </div>
   <div class="row gx-5 d-flex bd-highlight">
   <% @user.laptops.each do |laptop| %>  
@@ -41,12 +41,16 @@
               <ul>
                 <strong><li>Booking ID: <%= booking.id %></li></strong>
                 <li>Name of Lessee: <%= booking.user.first_name %> <%= booking.user.last_name %></li>
-                <li>End Date: <%= booking.date_from.strftime("%B %d, %Y") %></li>
+                <li>Start Date: <%= booking.date_from.strftime("%B %d, %Y") %></li>
                 <li>End Date: <%= booking.date_to.strftime("%B %d, %Y") %></li>
                 <li>Status: <%= booking.status %></li>
               </ul>
-                <%= link_to "Accept Booking", "#", class: "btn btn-success btn-sm" %>
-                <%= link_to "Decline Booking", "#", class: "btn btn-warning btn-sm" %>
+                <% if booking.status == "In Progress" %>
+                  <%= link_to "Accept Booking", "#", class: "btn btn-success btn-sm" %>
+                  <%= link_to "Decline Booking", "#", class: "btn btn-warning btn-sm" %>
+                <% else %>
+                  <p></p>
+                <% end %>               
             </div>
           <% end %>
       </div>
@@ -59,7 +63,7 @@
 <div class="container px-4">
   <div class="d-flex bd-highlight justify-content-center py-3">
     <h2>Your Bookings Made<h2>
-    <%= link_to "View Laptops to rent", "#", class: "btn btn-outline-warning btn-sm mx-3" %>
+    <%= link_to "View Laptops to rent", laptops_path, class: "btn btn-outline-warning btn-sm mx-3" %>
   </div>
   <div class="row gx-5 d-flex bd-highlight">
   <% @user.bookings.each do |booking| %>  
@@ -73,15 +77,27 @@
               <li>Laptop Owner: <%= booking.laptop.user.first_name %> <%= booking.laptop.user.last_name %></li>
               <li>Start Date: <%= booking.date_from.strftime("%B %d, %Y") %></li>
               <li>End Date: <%= booking.date_to.strftime("%B %d, %Y") %></li>
+              <li>Daily Rate: <%= booking.laptop.rental_rate %></li>
               <li>Collection Point: <%= booking.laptop.collection_point %></li>
               <li>Status: <%= booking.status %></li>
             </ul>
-              <%= link_to "View Booking", "#", class: "btn btn-success btn-sm" %>
-              <%= link_to "Delete Booking", "#", class: "btn btn-warning btn-sm" %>
-              <%= link_to "Add Review", "#", class: "btn btn-info btn-sm" %>
+            
+                <div class="row">
+                  <div class="col">
+                    <%= link_to "View Booking", booking, class: "btn btn-success btn-sm" %>
+                  </div>
+                  <div class="col">
+                    <%= button_to "Delete Booking", booking, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-warning btn-sm" %>
+                  </div>
+                  <div class="col">
+                    <%= link_to "Add Review",  "#", class: "btn btn-info btn-sm" %>
+                  </div>
+                </div>
+
         </div>      
       </div>
     </div>  
   <% end %>
   </div>
 </div>
+
