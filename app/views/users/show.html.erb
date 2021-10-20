@@ -1,7 +1,7 @@
 <div class="row mx-2">
   <div class="col-4">
     <div class="my-4 text-center">
-      <img class="avatar-extra-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+      <%= image_tag current_user.photo, class: "avatar-extra-large"%>
     </div>
     <div class="text-center my-1">
       <%= link_to "Update Profile",  edit_user_path(@user), class: "btn btn-warning btn-sm" %>
