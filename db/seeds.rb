@@ -68,8 +68,10 @@ user9 = {
           password: "secret"
         }
 
-[user1, user2, user3, user4, user5, user6, user7, user8, user9].each do |attributes|
+[user1, user2, user3, user4, user5, user6, user7, user8, user9].each_with_index do |attributes, i|
   user = User.create!(attributes)
+  user.photo.attach(io: File.open(Rails.root.join("app/assets/images/users/#{i+1}.jpeg")),
+                  filename: "#{i+1}.jpeg")
     puts "Created #{user.first_name} #{user.last_name}"
 end
 
@@ -137,7 +139,7 @@ laptop6 = {
 
 [laptop1, laptop2, laptop3, laptop4, laptop5, laptop6].each_with_index do |attributes, i|
   laptop = Laptop.create!(attributes)
-  laptop.photo.attach(io: File.open(Rails.root.join("app/assets/images/#{i+1}.jpg")),
+  laptop.photo.attach(io: File.open(Rails.root.join("app/assets/images/laptops/#{i+1}.jpg")),
                   filename: "#{i+1}.jpg")
   puts "Created #{laptop.brand}"
 end
