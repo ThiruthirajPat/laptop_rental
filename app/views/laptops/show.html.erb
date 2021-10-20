@@ -56,7 +56,7 @@
       <% @laptop.bookings.each do |booking| %>
         <% booking.reviews.each do |review| %>
           <div class="card p-2">
-            <p><strong>User:</strong> <%= booking.user.first_name %> <%=booking.user.last_name %></p>
+            <div> <%= image_tag booking.user.photo, class: "avatar" %> <p> <%= booking.user.first_name %> <%=booking.user.last_name %></p></div> 
             <p><strong>Rating:</strong> <% review.rating.times do  %>
               <i class="fas fa-star"></i>
             <% end %>
