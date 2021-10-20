@@ -1,5 +1,6 @@
 <h2>Sign up</h2>
 
+<div class="w-50 p-3">
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
@@ -8,6 +9,10 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
+    <%= f.input :first_name, required: true, autofocus: true %>
+    <%= f.input :last_name, required: true, autofocus: true %>
+    <%= f.label "Please attach a photo to be used as an avatar"%>
+    <%= f.input_field :photo, as: :file %>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
@@ -21,5 +26,5 @@
     <%= f.button :submit, "Sign up" %>
   </div>
 <% end %>
-
+</div>
 <%= render "devise/shared/links" %>
