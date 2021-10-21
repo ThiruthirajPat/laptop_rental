@@ -6,34 +6,65 @@
         <h3><strong>Add Your Laptop</strong></h3>
         </div>
         <%= simple_form_for @laptop do |f| %>
-          <div class="my-2">
-            <%= f.label "Select the brand of your laptop"%>
-            <%= f.input_field :brand, collection: ["HP", "Apple", "Dell", "Asus", "Acer", "Lenovo"] %>
-          <div>
-          <div class="my-2">
-            <%= f.label "Which Model is it?"%>
-            <%= f.input_field :model %>
+          <div class="row mb-3">
+            <div class="col col-5">
+              <%= f.label "Select the brand of your laptop"%>
+            </div>
+            <div class="col">
+              <%= f.input_field :brand, collection: ["HP", "Apple", "Dell", "Asus", "Acer", "Lenovo"] %>
+            </div>
           </div>
-          <div class="my-2">
-            <%= f.label "Select its Operating System"%>
-            <%= f.input_field :operating_system, collection: ["Windows", "Mac", "Linux"], placeholder: 'Laptop OS' %>
+          <div class="row mb-3">
+            <div class="col col-5">
+              <%= f.label "Which Model is it?"%>
+            </div>
+            <div class="col">
+              <%= f.input_field :model %>
+            </div>
           </div>
-          <div class="my-2">
-            <%= f.label "Select its Date of Manufacture"%>
-            <%= f.date_field :date_manufacture, placeholder: 'Laptop DOM' %>
+          <div class="row mb-3">
+            <div class="col col-5">
+              <%= f.label "Select its Operating System"%>
+            </div>
+            <div class="col">
+              <%= f.input_field :operating_system, collection: ["Windows", "Mac", "Linux"], placeholder: 'Laptop OS' %>
+            </div>          
           </div>
-          <div class="my-2">
-            <%= f.label "Where can the Lessee collect it?"%>
-            <%= f.input_field :collection_point, collection: ["Curepipe, Mauritius", "Port Louis, Mauritius", "Quatre Bornes, Mauritius", "Vacoas, Mauritius", "Rose Hill, Mauritius"], placeholder: 'Laptop collection_point' %>
+          <div class="row mb-3">
+            <div class="col col-5">
+              <%= f.label "Select its Date of Manufacture"%>
+            </div>
+            <div class="col">
+              <%= f.date_field :date_manufacture, placeholder: 'Laptop DOM' %>
+            </div>  
           </div>
-          <div class="my-2">
-            <%= f.label "What is the Daily Rental Rate?"%>
-            <%= f.input_field :rental_rate, placeholder: 'in Mauritian Rupees' %>
-          </div class="my-2">
-           <%= f.label "Please attach a photo of your laptop"%>
-           <%= f.input_field :photo, as: :file %>
-          <div class="my-4">
-            <%= f.submit class: 'btn btn-outline-warning btn-sm' %>
+          <div class="row mb-3">
+            <div class="col col-5">
+              <%= f.label "Where can the Lessee collect it?"%>
+            </div>
+            <div class="col">
+              <%= f.input_field :collection_point, collection: ["Curepipe, Mauritius", "Port Louis, Mauritius", "Quatre Bornes, Mauritius", "Vacoas, Mauritius", "Rose Hill, Mauritius"], placeholder: 'Laptop collection_point' %>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col col-5">
+              <%= f.label "What is the Daily Rental Rate?"%>
+            </div>
+            <div class="col">
+              <%= f.input_field :rental_rate, placeholder: 'in Mauritian Rupees' %>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col">
+              <%= f.label "Please attach a photo of your laptop"%>
+            </div>
+            <div class="col mt-2">  
+              <%= f.input_field :photo, as: :file %>
+            </div>
+          </div>
+          
+          <div class="row m-4 justify-content-center">
+              <%= f.submit class: 'btn btn-outline-warning btn-sm' %>
           </div>
         <% end %>
       </div>
