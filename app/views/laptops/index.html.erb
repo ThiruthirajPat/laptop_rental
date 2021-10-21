@@ -18,23 +18,24 @@
   <% end %>
 </div>
 
-<div class="container py-5">
+<div class="container text-center py-5">
+  <div class="row align-items-center">
     <% @laptops.each do |laptop| %>
-
-        <div class="card-product p-2">
-          <%= image_tag laptop.photo.attached? ? cl_image_path(laptop.photo.key) : asset_path('laptop_background.jpg') %>
-            <div class="card-product-infos">
-              <h5><strong><%= laptop.brand %> <%= laptop.model %></strong></h5>
-              <h6><strong>Operating System:</strong> <%= laptop.operating_system %></h6>
-              <h6><strong>Date of Manufacture:</strong> <%= laptop.date_manufacture.strftime("%B %d, %Y") %></h6>
-              <h6><strong>Daily Rental Rate (MUR):</strong> <%= laptop.rental_rate %></h6>
-              <h6><strong>Collection Point:</strong> <%= laptop.collection_point %></h6>
-              <div class="my-5">
-                <%= link_to "View", laptop_path(laptop), class:'text-decoration-none btn btn-warning' %>
-              </div>
+      <div class="col">
+      <div class="card-product">
+        <%= image_tag laptop.photo.attached? ? cl_image_path(laptop.photo.key) : asset_path('laptop_background.jpg') %>
+          <div class="card-product-infos">
+            <h5><strong><%= laptop.brand %> <%= laptop.model %></strong></h5>
+            <p><strong>Operating System:</strong> <%= laptop.operating_system %></p>
+            <p><strong>Date of Manufacture:</strong> <%= laptop.date_manufacture.strftime("%B %d, %Y") %></p>
+            <p><strong>Daily Rental Rate (MUR):</strong> <%= laptop.rental_rate %></p>
+            <p><strong>Collection Point:</strong> <%= laptop.collection_point %></p>
+            <div class="button">
+              <%= link_to "View", laptop_path(laptop), class:'text-decoration-none btn btn-warning' %>
             </div>
-        </div>
-        <br>
-
+          </div>
+          </div>
+      </div>
     <% end %>
+  </div>
 </div>
