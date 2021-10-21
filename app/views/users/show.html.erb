@@ -1,7 +1,11 @@
 <div class="row mx-2">
   <div class="col-4">
     <div class="my-4 text-center">
-      <%= image_tag current_user.photo, class: "avatar-extra-large"%>
+      <% if current_user.photo.attached? %>
+        <%= image_tag current_user.photo, class: "avatar-extra-large"%>
+      <% else %>
+        <%= image_tag "users/avatar-none.jpg", class: "avatar-extra-large"%>
+      <% end%>    
     </div>
     <div class="text-center my-1">
       <%= link_to "Update Profile",  edit_user_path(@user), class: "btn btn-warning btn-sm" %>
