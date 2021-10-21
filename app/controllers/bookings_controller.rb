@@ -26,9 +26,11 @@ class BookingsController < ApplicationController
   end
 
   def show
-    @booking.user = current_user 
+    @booking.user = current_user
+    @review = Review.new
+    @laptop = @booking.laptop
   end
-
+  
   def edit
   end
 
