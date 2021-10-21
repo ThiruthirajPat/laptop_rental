@@ -9,8 +9,9 @@ class ReviewsController < ApplicationController
     def create
         @review = Review.new(review_params)
         @review.booking = @booking
+        @laptop = @booking.laptop
         if @review.save
-            redirect_to laptops_path(@booking), notice: 'Your review was created' 
+            redirect_to laptop_path(@laptop), notice: 'Your review was created' 
         else
             render :new
         end
