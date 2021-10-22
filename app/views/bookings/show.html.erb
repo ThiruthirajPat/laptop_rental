@@ -55,18 +55,27 @@
 <div class="container">
   <div class="row">
     <%= simple_form_for [@booking, @review] do |f| %>
-      <div class="my-2">
-        <%= f.label "Rating"%>
-        <%= f.input_field :rating, collection: ["1", "2", "3", "4", "5"] %>
-      <div>
-      <div class="my-2">
-        <%= f.label "Comments"%>
-        <%= f.input_field :content %>
+    <div class="row mx-2">
+      <div class="col">
+        <strong><%= f.label "Comments"%></strong>
       </div>
-      <div class="my-4">
-        <%= f.submit class: 'btn btn-outline-warning btn-sm' %>
-       </div>
-       <%= link_to "View", laptop_path(@laptop), class:'text-decoration-none btn btn-warning' %>
+      <div class="col">
+        <%= f.input_field :content %>
+      </div>      
+    </div>
+    <div class="row mx-2 text-left my-3">
+      <div class="col">
+        <strong><%= f.label "Ratings"%></strong>
+      </div>
+      <div class="col">
+        <%= f.input_field :rating, collection: ["1", "2", "3", "4", "5"], class:'col-6' %>
+      </div>
+    </div>
+    <div class="row mx-2 my-4">
+    <div class="col">
+      <%= f.submit "Add a Review", class: 'btn btn-warning btn-sm' %>
+    </div>
+       <% link_to "View", laptop_path(@laptop), class:'text-decoration-none btn btn-warning' %>
     <% end %>
   </div>
 </div>
