@@ -34,6 +34,15 @@ class BookingsController < ApplicationController
   def edit
   end
 
+
+  def update
+    if @booking.update(booking_params)
+      redirect_to bookings_index_path, notice: 'Booking was updated'
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @booking.user = current_user 
     @booking.destroy
