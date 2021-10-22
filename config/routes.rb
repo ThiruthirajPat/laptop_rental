@@ -24,4 +24,11 @@ Rails.application.routes.draw do
   resources :bookings, only: [:destroy]
   resources :reviews, only: [:destroy]
 
+  resources :bookings do
+    member do
+      put :accept
+      put :reject
+    end
+  end
+
 end

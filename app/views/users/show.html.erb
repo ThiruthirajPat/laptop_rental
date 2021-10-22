@@ -49,12 +49,18 @@
                 <li>End Date: <%= booking.date_to.strftime("%B %d, %Y") %></li>
                 <li>Status: <%= booking.status %></li>
               </ul>
+                <div class="row">
                 <% if booking.status == "In Progress" %>
-                  <%= link_to "Accept Booking", "#", class: "btn btn-success btn-sm" %>
-                  <%= link_to "Decline Booking", "#", class: "btn btn-warning btn-sm" %>
+                  <div class="col">
+                    <%= button_to "Accept Booking",  accept_booking_path(booking), method: :put,  data: { confirm: "Are you sure?" }, class: "btn btn-warning btn-sm" %>
+                  </div>
+                  <div class="col">
+                    <%= button_to "Decline Booking", reject_booking_path(booking), method: :put, :confirm => "Sure?", class: "btn btn-danger btn-sm" %>
+                  </div>
                 <% else %>
                   <p></p>
-                <% end %>               
+                <% end %>  
+                </div>
             </div>
           <% end %>
       </div>
@@ -85,19 +91,17 @@
               <li>Collection Point: <%= booking.laptop.collection_point %></li>
               <li>Status: <%= booking.status %></li>
             </ul>
-            
                 <div class="row">
                   <div class="col">
-                    <%= link_to "View Booking", booking, class: "btn btn-success btn-sm" %>
+                    <%= link_to "View Booking", booking, class: "btn btn-warning btn-sm" %>
                   </div>
                   <div class="col">
-                    <%= button_to "Delete Booking", booking, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-warning btn-sm" %>
+                    <%= button_to "Delete Booking", booking, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
                   </div>
                   <div class="col">
                     <%= link_to "Add Review",  "#", class: "btn btn-info btn-sm" %>
                   </div>
                 </div>
-
         </div>      
       </div>
     </div>  
