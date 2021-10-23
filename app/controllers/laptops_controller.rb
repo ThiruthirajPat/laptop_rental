@@ -36,7 +36,7 @@ class LaptopsController < ApplicationController
 
     def destroy
       @laptop.destroy
-      redirect_to laptops_path
+      redirect_to current_user, notice: 'Laptop was deleted'
     end
 
     def create

@@ -40,8 +40,16 @@
         <p><strong>Number of Bookings:</strong> <%= laptop.bookings.count %>
         <p><strong>Number of Reviews:</strong> <%= laptop.reviews.count %>
         <p><strong>Bookings Received:</strong>
+        <div class="row">
+            <div class="col">
+              <%= link_to "Update Laptop",   edit_laptop_path(laptop), class: "btn btn-warning btn-sm" %>
+            </div>
+            <div class="col">
+              <%= button_to "Delete Laptop", laptop, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+            </div>
+        </div>      
           <% laptop.bookings.each do |booking| %>
-            <div class="py-2">
+            <div class="mx-2 py-2">
               <ul>
                 <strong><li>Booking ID: <%= booking.id %></li></strong>
                 <li>Name of Lessee: <%= booking.user.first_name %> <%= booking.user.last_name %></li>
