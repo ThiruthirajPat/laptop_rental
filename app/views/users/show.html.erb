@@ -45,7 +45,7 @@
               <%= link_to "Update Laptop",   edit_laptop_path(laptop), class: "btn btn-warning btn-sm" %>
             </div>
             <div class="col">
-              <%= button_to "Delete Laptop", laptop, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+              <%= button_to "Delete Laptop", laptop, method: :delete, data: { confirm: "Are you sure?" },  class: "btn btn-danger btn-sm" %>
             </div>
         </div>      
           <% laptop.bookings.each do |booking| %>
@@ -63,7 +63,7 @@
                     <%= button_to "Accept Booking",  accept_booking_path(booking), method: :put,  data: { confirm: "Are you sure?" }, class: "btn btn-warning btn-sm" %>
                   </div>
                   <div class="col">
-                    <%= button_to "Decline Booking", reject_booking_path(booking), method: :put, :confirm => "Sure?", class: "btn btn-danger btn-sm" %>
+                    <%= button_to "Decline Booking", reject_booking_path(booking), method: :put, :confirm => "Are  you sure?", class: "btn btn-danger btn-sm" %>
                   </div>
                 <% else %>
                   <p></p>
