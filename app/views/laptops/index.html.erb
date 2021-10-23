@@ -21,15 +21,17 @@
 <div class="container text-center py-5">
   <div class="row align-items-center">
     <% @laptops.each do |laptop| %>
-      <div class="col">
+      <div class="col-4">
       <div class="card-product">
         <%= image_tag laptop.photo.attached? ? cl_image_path(laptop.photo.key) : asset_path('laptop_background.jpg') %>
           <div class="card-product-infos">
             <h5><strong><%= laptop.brand %> <%= laptop.model %></strong></h5>
-            <p><strong>Operating System:</strong> <%= laptop.operating_system %></p>
-            <p><strong>Date of Manufacture:</strong> <%= laptop.date_manufacture.strftime("%B %d, %Y") %></p>
-            <p><strong>Daily Rental Rate (MUR):</strong> <%= laptop.rental_rate %></p>
-            <p><strong>Collection Point:</strong> <%= laptop.collection_point %></p>
+            <div class=text-left>
+              <p><strong>Operating System:</strong> <%= laptop.operating_system %></p>
+              <p><strong>Date of Manufacture:</strong> <%= laptop.date_manufacture.strftime("%B %d, %Y") %></p>
+              <p><strong>Daily Rental Rate (MUR):</strong> <%= laptop.rental_rate %></p>
+              <p><strong>Collection Point:</strong> <%= laptop.collection_point %></p>
+            </div>
             <div class="button">
               <%= link_to "View", laptop_path(laptop), class:'text-decoration-none btn btn-warning' %>
             </div>
