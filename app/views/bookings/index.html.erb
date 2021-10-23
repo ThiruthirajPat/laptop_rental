@@ -1,26 +1,29 @@
 <div class="mb-4 d-flex align-items-center justify-content-center">
   <div class="text-center">
-    <h1>My bookings</h1>
+    <h1>My Bookings</h1>
   </div>
 </div>
 
 <div class="container py-2">
   <% current_user.bookings.each do |booking| %>
     <%# <%= if booking.user_id == current_user.id %>
-    <%= link_to booking_path(booking), class:'text-decoration-none' do %>
-      <div class="card-product mx-auto">
-        <img src=<%= booking.laptop.photo.attached? ? cl_image_path(booking.laptop.photo.key) : asset_path('laptop_background.jpg') %>/>
-          <div class="card-product-infos">
-            <h2>Brand <%= booking.laptop.brand %></h2>
-            <p>Model <%= booking.laptop.model %></p>
-            <p>Date From <%= booking.date_from.strftime("%B %d, %Y") %></p>
-            <p>Date To <%= booking.date_to.strftime("%B %d, %Y") %></p>
-            <p>Status <%= booking.status %></p>
-            <p>Collection Point <%= booking.laptop.collection_point %></p>
-          </div>          
+
+      <div class="row">
+        <div class="col">
+          <%= image_tag booking.laptop.photo.attached? ? cl_image_path(booking.laptop.photo.key) : asset_path('laptop_background.jpg') %>
+        </div>
+        <div class="col">
+            <h5><strong><%= booking.laptop.brand %></strong>, <strong><%= booking.laptop.model %></strong></h5>
+            <h6><strong>Date From:</strong> <%= booking.date_from.strftime("%B %d, %Y") %></h6>
+            <h6><strong>Date To:</strong> <%= booking.date_to.strftime("%B %d, %Y") %></h6>
+            <h6><strong>Status:</strong> <%= booking.status %></h6>
+            <h6><strong>Collection Point:</strong> <%= booking.laptop.collection_point %></h6>
+          <%= link_to 'View the booking', booking, class: 'btn btn-success btn-sm' %>
+          <%= link_to 'Edit the booking', edit_booking_path(booking), class: 'btn btn-warning btn-sm' %>
+          
+        </div>          
       </div>
-      <%# <%= link_to 'Edit the booking', edit_booking_path(:booking_id), class: 'btn btn-flat' %>
       <br>
-    <% end %>
+
   <% end %>
 </div>

@@ -88,6 +88,9 @@
               <li>Start Date: <%= booking.date_from.strftime("%B %d, %Y") %></li>
               <li>End Date: <%= booking.date_to.strftime("%B %d, %Y") %></li>
               <li>Daily Rate: <%= booking.laptop.rental_rate %></li>
+                <% dif = (booking.date_from.to_date..booking.date_to.to_date).count %>
+                <% total = dif * booking.laptop.rental_rate %>
+              <li>Total Rental Rate: <%= total %> MUR</li>
               <li>Collection Point: <%= booking.laptop.collection_point %></li>
               <li>Status: <%= booking.status %></li>
             </ul>
@@ -97,9 +100,6 @@
                   </div>
                   <div class="col">
                     <%= button_to "Delete Booking", booking, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
-                  </div>
-                  <div class="col">
-                    <%= link_to "Add Review",  "#", class: "btn btn-info btn-sm" %>
                   </div>
                 </div>
         </div>      

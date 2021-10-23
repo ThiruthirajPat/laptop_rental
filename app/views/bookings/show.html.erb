@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center mt-5">
-  <h1>Details of the booking</h1>  
+  <h1>Details of the Booking</h1>  
 </div>
 
 <div class="container my-5">
@@ -25,6 +25,12 @@
           <tr>  
             <th><h5><strong>Daily Rental Rate:<strong><h5></th>
             <th><h5> <%= @booking.laptop.rental_rate %> MUR</h5></th>
+          </tr>
+          <tr>  
+            <th><h5><strong>Total Rental Rate:<strong><h5></th>
+            <% dif = (@booking.date_from.to_date..@booking.date_to.to_date).count %>
+            <% total = dif * @booking.laptop.rental_rate %>
+            <th><h5> <%= total %> MUR</h5></th>
           </tr>
           <tr>
             <th><h5><strong>Collection Point:<strong><h5></th>
@@ -68,7 +74,7 @@
         <strong><%= f.label "Ratings"%></strong>
       </div>
       <div class="col">
-        <%= f.input_field :rating, collection: ["1", "2", "3", "4", "5"], class:'col-6' %>
+        <%= f.input_field :rating, collection: ["1", "2", "3", "4", "5"], as: :radio_buttons, class:'col-6' %>
       </div>
     </div>
     <div class="row mx-2 my-4">
